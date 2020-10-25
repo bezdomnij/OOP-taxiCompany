@@ -31,14 +31,16 @@ public class TaxiCompany {
         Set<Car> outAlreadyCar = new HashSet<>();
         int i = outAlreadyCar.size();
         while (outAlreadyCar.size() != drivers.size()) {
-            Car temp = cars.get(RandomHelper.nextInt(drivers.size()));
-            if (!(temp instanceof SelfDriving) && (!outAlreadyCar.contains(temp))) {
-                temp.setDriver(drivers.get(i));
+            Car tempCar = cars.get(RandomHelper.nextInt(drivers.size()));
+            if (!(tempCar instanceof SelfDriving) && (!outAlreadyCar.contains(tempCar))) {
+                Driver actualDriver = drivers.get(i);
+                tempCar.setDriver(actualDriver);
+                actualDriver.setCar(tempCar);
             }
-            outAlreadyCar.add(temp);
+            outAlreadyCar.add(tempCar);
+
             i = outAlreadyCar.size();
         }
-
     }
 
     @Override

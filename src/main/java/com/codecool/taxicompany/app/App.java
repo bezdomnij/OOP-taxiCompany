@@ -24,6 +24,7 @@ public class App {
         System.out.println(driver3);
         System.out.println(car3);
         Car car4 = new SelfDriving();
+        System.out.println(car4);
         System.out.println("============= hiring==================");
         company.hireDriver(driver1);
         company.hireDriver(driver2);
@@ -32,7 +33,6 @@ public class App {
         company.registerCar(car2);
         company.registerCar(car3);
         company.registerCar(car4);
-        System.out.println(car4);
         System.out.println("========= allocating ============");
         company.allocateDrivers();
         System.out.println("============= results ==========");

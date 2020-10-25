@@ -1,19 +1,26 @@
 package com.codecool.taxicompany.driver;
 
+import com.codecool.taxicompany.cars.Car;
 import com.codecool.taxicompany.util.RandomHelper;
 
 public class Driver {
-    private String mobileNumber;
-    private String name;
-    private byte age;
+    private final String mobileNumber;
+    private final String name;
+    private final byte age;
     private int salary;
-    private ExperienceLevel experienceLevel;
+    private final ExperienceLevel experienceLevel;
+    private Car car;
+
 
     public Driver(String name, byte age) {
         this.mobileNumber = String.format("%05d", RandomHelper.nextInt(100000));
         this.experienceLevel = this.guessExperienceLevel();
         this.name = name;
         this.age = age;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     @Override
