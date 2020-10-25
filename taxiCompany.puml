@@ -22,12 +22,14 @@ class TaxiCompany{
     -cars: Set<Car>
     +buyCar(): void
     +maintainSelfDrivingCars(): boolean
+    +allocateDriverToCar(): HashMap<Driver, Car>
 }
 class Driver{
     -mobileNumber: int(format 00001)
     -name: String
     -age: byte
     -salary: int(cost of car)
+    -experienceLevel: ExperienceLevel
     __
 }
 abstract class Car{
