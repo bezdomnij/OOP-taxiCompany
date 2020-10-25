@@ -6,7 +6,10 @@ import com.codecool.taxicompany.driver.Driver;
 import java.util.Set;
 
 public class TaxiCompany {
-    Set<Driver> drivers;
-    Set<Car> cars;
+    private Set<Driver> drivers;
+    private Set<Car> cars;
 
+    public void hireDriver(Driver driver){
+        drivers.add(driver);
+    }
 }
