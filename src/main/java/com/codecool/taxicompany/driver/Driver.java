@@ -3,20 +3,38 @@ package com.codecool.taxicompany.driver;
 import com.codecool.taxicompany.cars.Car;
 import com.codecool.taxicompany.util.RandomHelper;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Driver {
     private final String mobileNumber;
     private final String name;
     private final byte age;
-    private int salary;
+    private double salary;
     private final ExperienceLevel experienceLevel;
     private Car car;
-
+    private static final Set<String> driverNumbers = new HashSet<>();
 
     public Driver(String name, byte age) {
         this.mobileNumber = String.format("%05d", RandomHelper.nextInt(100000));
         this.experienceLevel = this.guessExperienceLevel();
         this.name = name;
         this.age = age;
+        addNumber();
+        System.out.println(driverNumbers);
+    }
+
+    public ExperienceLevel getExperienceLevel() {
+        return experienceLevel;
+    }
+
+    public int getSalary() {
+        if (car != null)  return this.car.getCarType().getWeeklyCarCost();
+        return 0;
+    }
+
+    private void addNumber() {
+        driverNumbers.add(this.mobileNumber);
     }
 
     public void setCar(Car car) {
@@ -29,7 +47,9 @@ public class Driver {
                 "mobileNumber='" + mobileNumber + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", salary=" + salary +
                 ", experienceLevel=" + experienceLevel +
+                ", car=" + car +
                 '}';
     }
 

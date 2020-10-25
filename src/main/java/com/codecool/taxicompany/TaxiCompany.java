@@ -1,6 +1,7 @@
 package com.codecool.taxicompany;
 
 import com.codecool.taxicompany.cars.Car;
+import com.codecool.taxicompany.cars.Gasoline;
 import com.codecool.taxicompany.cars.SelfDriving;
 import com.codecool.taxicompany.driver.Driver;
 import com.codecool.taxicompany.util.RandomHelper;
@@ -13,6 +14,8 @@ import java.util.Set;
 public class TaxiCompany {
     private List<Driver> drivers;
     private List<Car> cars;
+    private double weeklyIncome;
+    private double weeklyCost;
 
     public TaxiCompany() {
         this.drivers = new ArrayList<>();
@@ -38,9 +41,38 @@ public class TaxiCompany {
                 actualDriver.setCar(tempCar);
             }
             outAlreadyCar.add(tempCar);
-
             i = outAlreadyCar.size();
         }
+    }
+
+    public double calcWeeklyProfit() {
+        calcWeeklyIncome();
+        calcWeeklyCost();
+        return weeklyIncome - weeklyCost;
+    }
+
+    private void calcWeeklyIncome() {
+        for (Car car: cars) {
+            if (!(car instanceof SelfDriving)) {
+                weeklyIncome += car.getDriver().getExperienceLevel().getWeeklyMaxRideCount();
+            } else {
+                weeklyIncome += ((SelfDriving) car).getMaxWeeklyPassengerCount();
+            }
+        }
+    }
+
+    private void calcWeeklyCost() {
+        for (Car car: cars) {
+            weeklyCost += car.getCarType().getWeeklyCarCost();
+            if (car instanceof Gasoline) {
+                weeklyCost += ((Gasoline) car).getWeeklyMaintenance();
+                ((Gasoline) car).setWeeklyMaintenance();
+            }
+        }
+        for (Driver driver: drivers) {
+            weeklyCost += driver.getSalary();
+        }
+
     }
 
     @Override

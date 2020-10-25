@@ -5,7 +5,7 @@ taxi Drivers Know other drivers' numbers - how to represent?
 vagy minden ciklusban + extra x%
 
 - egy osztaly peldanyai tudnak egymasrol (network-ben a smart deviceok a tobbi normalokrol, 
-taxiban a driverek egymasrol a telszamot)
+taxiban a driverek egymasrol a telszamot) - static-ban?
 
 
 - mikor subclasszokra jellemzo allando mindegyik subban, akkor azt a superbe bele lehet epiteni valahogy? - nem

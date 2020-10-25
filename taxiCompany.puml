@@ -30,6 +30,7 @@ class Driver{
     -age: byte
     -salary: int(cost of car)
     -experienceLevel: ExperienceLevel
+    -otherDrivers: Set<String>
     __
 }
 abstract class Car{
