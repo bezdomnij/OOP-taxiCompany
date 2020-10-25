@@ -1,0 +1,54 @@
+@startuml taxiCompany
+skinparam ClassAttributeIconSize 0
+TaxiCompany *-- Driver
+TaxiCompany *-- Car
+Car -- CarType
+Car <|-- Gasoline
+Car <|-- Electric
+Car <|-- SelfDriving
+ExperienceLevel -- Driver
+enum CarType {
+    GASOLINE (350)
+    ELECTRIC (400)
+    SELFDRIVING (740)
+}
+enum ExperienceLevel {
+    BEGINNER (15)
+    ADVANCED (25)
+    PROFESSIONAL (40)
+}
+class TaxiCompany{
+    -drivers: Set<Driver>
+    -cars: Set<Car>
+    +buyCar(): void
+    +maintainSelfDrivingCars(): boolean
+}
+class Driver{
+    -mobileNumber: int(format 00001)
+    -name: String
+    -age: byte
+    -salary: int(cost of car)
+    __
+}
+abstract class Car{
+    #uniqueId: long
+    #costPerWeek: int
+    #weeklyPassengerCount: int
+    #driversMaxWeeklyRideCount: int
+}
+class Gasoline{
+    -Gasoline(Driver)
+    -weeklyMaintenance(20+)
+}
+class Electric{
+    -Electric(Driver)
+}
+class SelfDriving{
+    - MAXWEEKLYPASSENGERCOUNT (70)
+}
+class RandomHelper{
+    +getMobileNumbers(): int
+    +assignExperienceLevel(): ExperienceLevel
+    +assignDriverToCar()
+}
+@enduml

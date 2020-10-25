@@ -1,0 +1,13 @@
+taxi Drivers Know other drivers' numbers - how to represent?
+"the company has ... it knows about all of them"
+
+- van egy field, ami standard ciklusos novekedessel bir, minden ciklusban + extra fix amount
+vagy minden ciklusban + extra x%
+
+- egy osztaly peldanyai tudnak egymasrol (network-ben a smart deviceok a tobbi normalokrol, 
+taxiban a driverek egymasrol a telszamot)
+
+
+
+
+
