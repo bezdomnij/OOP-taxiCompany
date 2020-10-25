@@ -1,15 +1,62 @@
 package com.codecool.taxicompany;
 
 import com.codecool.taxicompany.cars.Car;
+import com.codecool.taxicompany.cars.SelfDriving;
 import com.codecool.taxicompany.driver.Driver;
+import com.codecool.taxicompany.util.RandomHelper;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class TaxiCompany {
-    private Set<Driver> drivers;
-    private Set<Car> cars;
+    private List<Driver> drivers;
+    private List<Car> cars;
+
+    public TaxiCompany() {
+        this.drivers = new ArrayList<>();
+        this.cars = new ArrayList<>();
+    }
 
     public void hireDriver(Driver driver){
         drivers.add(driver);
+    }
+
+    public void registerCar(Car car) {
+        cars.add(car);
+    }
+
+    public void allocateDrivers() {
+        Set<Car> outAlreadyCar = new HashSet<>();
+        int i = outAlreadyCar.size();
+        while (outAlreadyCar.size() != drivers.size()) {
+            Car temp = cars.get(RandomHelper.nextInt(drivers.size()));
+            if (!(temp instanceof SelfDriving) && (!outAlreadyCar.contains(temp))) {
+                temp.setDriver(drivers.get(i));
+            }
+            outAlreadyCar.add(temp);
+            i = outAlreadyCar.size();
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sbd = new StringBuilder();
+        for (Driver driver: drivers) {
+            sbd.append(driver.toString());
+            sbd.append("\n");
+        }
+        StringBuilder sbc = new StringBuilder();
+        for (Car car: cars) {
+            sbc.append(car.toString());
+            sbc.append("\n");
+        }
+
+        return "TaxiCompany{" +
+                "drivers=\n" + sbd.toString() +
+                ", cars=\n" + sbc.toString() +
+                '}';
     }
 }

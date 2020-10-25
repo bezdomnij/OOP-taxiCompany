@@ -3,11 +3,11 @@ package com.codecool.taxicompany.driver;
 import com.codecool.taxicompany.util.RandomHelper;
 
 public class Driver {
-    String mobileNumber;
-    String name;
-    byte age;
-    int salary;
-    ExperienceLevel experienceLevel;
+    private String mobileNumber;
+    private String name;
+    private byte age;
+    private int salary;
+    private ExperienceLevel experienceLevel;
 
     public Driver(String name, byte age) {
         this.mobileNumber = String.format("%05d", RandomHelper.nextInt(100000));

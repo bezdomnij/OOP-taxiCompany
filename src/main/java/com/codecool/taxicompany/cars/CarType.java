@@ -14,4 +14,9 @@ public enum CarType {
     public int getWeeklyCarCost() {
         return weeklyCarCost;
     }
+
+    @Override
+    public String toString() {
+        return "CarType{}";
+    }
 }

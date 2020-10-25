@@ -6,18 +6,22 @@ public abstract class Car {
     protected String uniqueId;
     protected int costPerWeek;
     protected int weeklyPassengerCount;
-    protected int driversWeeklyMaxRideCount;
     protected Driver driver;
 
     public Car() {
     }
 
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
     @Override
     public String toString() {
-        return "Car{uniqueId='" + uniqueId + '\'' +
+        return "Car{" +
+                "uniqueId='" + uniqueId + '\'' +
                 ", costPerWeek=" + costPerWeek +
                 ", weeklyPassengerCount=" + weeklyPassengerCount +
-                ", driversWeeklyMaxRideCount=" + driversWeeklyMaxRideCount +
+                ", driver=" + driver +
                 '}';
     }
 
